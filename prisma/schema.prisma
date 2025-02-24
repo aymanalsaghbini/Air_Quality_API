@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["multiSchema"] 
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  schemas  = ["air_quality"]
+}
+
+
+model User {
+  id        String @id @default(uuid())
+  email     String @unique
+  password  String
+  role      Role
+
+  @@schema("air_quality")
+}
+
+model AirQualityData {
+  id          Int     @id @default(autoincrement())
+  date        DateTime
+  time        String
+  co_gt       Float?   @map("CO(GT)")
+  pt08_s1_co  Float?   @map("PT08.S1(CO)")
+  nmhc_gt     Float?   @map("NMHC(GT)")
+  c6h6_gt     Float?   @map("C6H6(GT)")
+  pt08_s2_nmhc Float?  @map("PT08.S2(NMHC)")
+  nox_gt      Float?   @map("NOx(GT)")
+  pt08_s3_nox Float?   @map("PT08.S3(NOx)")
+  no2_gt      Float?   @map("NO2(GT)")
+  pt08_s4_no2 Float?   @map("PT08.S4(NO2)")
+  pt08_s5_o3  Float?   @map("PT08.S5(O3)")
+  t           Float?
+  rh          Float?
+  ah          Float?
+
+  @@schema("air_quality")
+  @@map("air_quality.air_quality_data")
+}
+
+enum Role {
+  ADMIN
+  USER
+
+  @@schema("air_quality")
+}

@@ -44,7 +44,7 @@ The **Air Quality API** is a backend service built using **NestJS**, **PostgreSQ
 ## Project setup
 
 Clone the repository:
-git clone <repository-url>
+git clone https://github.com/aymanalsaghbini/Air_Quality_API.git
 
 
 1. Make sure you have node >= 20 installed
@@ -70,7 +70,7 @@ PORT=8000
 $ npm install @prisma/client prisma
 ```
 
-2️- **Run Database Migrations**
+2- **Run Database Migrations**
 
 ```bash
 $ npx prisma migrate dev --name init
@@ -78,13 +78,13 @@ $ npx prisma migrate dev --name init
 
 (Replace init with a meaningful migration name.)
 
-3️- **Generate Prisma Client**
+3- **Generate Prisma Client**
 
 ```bash
 $ npx prisma generate
 ```
 
-4️- **Verify Database & Data**
+4- **Verify Database & Data**
 
 ```bash
 $ npx prisma studio
@@ -102,3 +102,5 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+Eng.Ayman Alsaghbini
